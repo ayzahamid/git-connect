@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { account, ID } from "./appwrite"
+import { account, ID } from "../appwrite"
 import { Models } from "appwrite"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,6 @@ const LoginPage: React.FC = () => {
   const [name, setName] = useState<string>("")
 
   const login = async (email: string, password: string) => {
-    console.log("Check", process.env.NEXT_PUBLIC_APP_WRITE_ENDPOINT)
     await account.createEmailPasswordSession(email, password)
     const user = await account.get()
     setLoggedInUser(user)
